@@ -16,6 +16,7 @@
         <input class="password" type="password" name="password" placeholder="password" onfocus="this.placeholder=''" onblur="this.placeholder='password'" required>
         <button class="login-btn" type="submit" name="login">Login</button>
       </form>
+      <button type="button" name="button">register</button>
     </div>
   </body>
 </html>
