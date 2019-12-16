@@ -13,7 +13,7 @@
       header("Location: http://localhost/todoSite_webProg/index.php");
       exit();
     }else{
-      echo '<p>zsirság</p>';
+      echo '<p>goood</p>';
       console_log($_SESSION['logged']);
     }
      ?>
