@@ -3,13 +3,16 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="public/css/style.css">
-    <title>Todo</title>
+    <link rel="icon" href="public/images/icon.png">
+    <title>TodoSite</title>
   </head>
   <header class="header">
     <h1>Todo Site</h1>
   </header>
   <body>
     <?php
+    session_start();
+    $_SESSION['logged'] = False;
     $page = $_GET['page'];
     if($page == null){ $page = 'login'; }
 
@@ -42,9 +45,13 @@
 					$result = $conn->query($sql);
           $row = mysqli_fetch_row($result);
           if($row){
-            console_log('ok');
+            $_SESSION['logged'] = True;
+            console_log('ok ' . $_SESSION['logged']);
+            header("Location: http://localhost/todoSite_webProg/todo.php");
+            exit();
           }else {
-            console_log('not ok');
+            $message = "Username and/or Password incorrect.\\nTry again.";
+            echo "<script type='text/javascript'>alert('$message');</script>";
           }
 
         }
