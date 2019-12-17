@@ -4,6 +4,7 @@
 <head>
 	<title>Todo - Login</title>
 	<link rel="stylesheet" type="text/css" href="public/css/style.css">
+	<link rel="icon" href="public/images/icon.png">
 </head>
 <body>
 	<header class="header">
@@ -17,8 +18,8 @@
 
 			<div class="input-group">
 				<input class="username" type="text" name="username" placeholder="username" onfocus="this.placeholder=''" onblur="this.placeholder='username'" required autofocus>
+				<div class="input-group">
 			</div>
-			<div class="input-group">
 				<input class="password" type="password" name="password" placeholder="password" onfocus="this.placeholder=''" onblur="this.placeholder='password'" required>
 			</div>
 			<div class="input-group">

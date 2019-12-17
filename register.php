@@ -4,6 +4,7 @@
 <head>
 	<title>Todo - Register</title>
 	<link rel="stylesheet" type="text/css" href="public/css/style.css">
+	<link rel="icon" href="public/images/icon.png">
 </head>
 <body>
 	<header class="header">
