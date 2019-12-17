@@ -22,12 +22,23 @@ div.login{
   margin: auto;
 }
 
+div.register{
+  max-width: 250px;
+  margin: auto;
+}
+
 .loginForm{
   padding: 25px;
   height: 150px;
   border-right: solid 3px #4CAF50;
   border-bottom: solid  3px #4CAF50;
+}
 
+.registerForm{
+  padding: 25px;
+  height: 230px;
+  border-right: solid 3px #4CAF50;
+  border-bottom: solid  3px #4CAF50;
 }
 
 input{
@@ -39,11 +50,12 @@ input{
 }
 
 input.username{
-  padding-left: 20px;
+  padding-left: 22px;
   background-image: url("../images/user.svg");
   background-position: left;
   background-repeat: no-repeat;
   width: 70px;
+  height: 20px;
 }
 
 input.username:focus{
@@ -52,14 +64,29 @@ input.username:focus{
 }
 
 input.password{
-  padding-left: 20px;
-  background-image: url("../images/padlock.svg");
+  padding-left: 22px;
+  background-image: url("../images/lock.svg");
   background-position: left;
   background-repeat: no-repeat;
   width: 70px;
+  height: 20px;
 }
 
 input.password:focus{
+  outline-width: 0;
+  width: 146px;
+}
+
+input.email{
+  padding-left: 22px;
+  background-image: url("../images/email.svg");
+  background-position: left;
+  background-repeat: no-repeat;
+  width: 70px;
+  height: 20px;
+}
+
+input.email:focus{
   outline-width: 0;
   width: 146px;
 }

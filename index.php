@@ -1,69 +1,48 @@
+<?php
+	session_start();
+
+	if (!isset($_SESSION['username'])) {
+		$_SESSION['msg'] = "You must log in first";
+		header('location: login.php');
+	}
+
+	if (isset($_GET['logout'])) {
+		session_destroy();
+		unset($_SESSION['username']);
+		header("location: login.php");
+	}
+
+?>
 <!DOCTYPE html>
-<html lang="hu">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="public/css/style.css">
-    <link rel="icon" href="public/images/icon.png">
-    <title>TodoSite</title>
-  </head>
-  <header class="header">
+<html>
+<head>
+	<title>Todo - Home</title>
+	<link rel="stylesheet" type="text/css" href="public/css/style.css">
+</head>
+<body>
+	<header class="header">
     <h1>Todo Site</h1>
   </header>
-  <body>
-    <?php
-    session_start();
-    $_SESSION['logged'] = False;
-    $page = $_GET['page'];
-    if($page == null){ $page = 'login'; }
+	<div class="content">
 
-    $servername = "localhost";
-    $dbUsername = "debian-sys-maint";
-    $dbPass = "RQR8qQapxFhNqcia";
-    $dbName = "todo_site";
+		<!-- notification message -->
+		<?php if (isset($_SESSION['success'])) : ?>
+			<div class="error success" >
+				<h3>
+					<?php
+						echo $_SESSION['success'];
+						unset($_SESSION['success']);
+					?>
+				</h3>
+			</div>
+		<?php endif ?>
 
-    $conn = new mysqli($servername, $dbUsername, $dbPass, $dbName);
+		<!-- logged in user information -->
+		<?php  if (isset($_SESSION['username'])) : ?>
+			<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
+			<p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
+		<?php endif ?>
+	</div>
 
-      if($page == 'login'){
-        echo file_get_contents('login.php');
-
-          if(isset($_POST['login-btn']) && !empty($_POST['username']) && !empty($_POST['password'])){
-
-    				if ($conn->connect_error) {
-    						die("Connection failed: " . $conn->connect_error);
-    				}else{
-
-              $loginUsername = $_POST['username'];
-              $loginPassword = $_POST['password'];
-              console_log('usr: ' . $loginUsername);
-              console_log('pass: ' . $loginPassword);
-
-              $sql = "SELECT id, username, password FROM Users WHERE username = \"" . $loginUsername . "\";";
-              console_log($sql);
-    					$result = $conn->query($sql);
-              $row = mysqli_fetch_row($result);
-              if($row){
-                $_SESSION['logged'] = True;
-                console_log('ok ' . $_SESSION['logged']);
-                header("Location: http://localhost/todoSite_webProg/todo.php");
-                exit();
-              }else {
-                $message = "Username and/or Password incorrect.\\nTry again.";
-                echo "<script type='text/javascript'>alert('$message');</script>";
-              }
-            }
-          }
-      }elseif ($page == 'register'){
-        echo file_get_contents('register.php');
-      }
-     ?>
-  </body>
+</body>
 </html>
-<?php
-function console_log($data) {
-  $output = $data;
-  if (is_array($output))
-      $output = implode(',', $output);
-
-  echo "<script>console.log('" . $output . "');</script>";
-}
- ?>
