@@ -17,6 +17,14 @@ h1{
   margin-bottom: 20px;
 }
 
+.header-todo{
+    height: 90px;
+    line-height: 90px;
+    text-align: center;
+    background: #54af58;
+    margin-bottom: 0;
+}
+
 div.tings_to_do{
   width: 30%;
   background-color: white;
@@ -65,6 +73,7 @@ div.todo{
   border-radius: 5px;
   background-color: #c9ffd5;
   padding-left: 10px;
+  margin-top: 5px;
 }
 
 .done-btn{
@@ -72,6 +81,57 @@ div.todo{
   height: 20px;
   width: 20px;
   background: url("../images/check.svg");
+}
+
+div.topbar{
+  height: 50px;
+  margin-top: 0;
+}
+
+.add_todo{
+  width: 340px;
+  height: 40px;
+}
+
+.exit-btn{
+  border: none;
+  height: 40px;
+  width: 40px;
+  background: url("../images/chevron-double-right.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  float: right;
+  background-color: #ff954f;
+  border-radius: 5px;
+}
+
+.drop-btn{
+  border: none;
+  background: url("../images/chevron-right.svg");
+  float: right;
+  border-radius: 5px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 21px;
+  width: 21px;
+  margin: 0;
+}
+
+p{
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+.search-btn{
+  border: none;
+  height: 40px;
+  width: 40px;
+  background: url("../images/magnify.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #4CAF50;
+  border-radius: 5px;
 }
 
 div.login{
