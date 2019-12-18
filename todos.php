@@ -12,9 +12,18 @@
       <h1>Todo Site</h1>
     </header>
     <div class="topbar">
-      <input type="text" name="search" value="">
-      <button class='search-btn' ></button>
-      <button class='exit-btn'></button>
+      <form class="" action="todos.php" method="post">
+        <input type="text" name="search" value="">
+        <button class='search-btn' name='search'></button>
+        <button class='exit-btn' name='exit'></button>
+      </form>
+      <?php
+        if(isset($_POST['exit'])){
+          unset($_SESSION['success']);
+          unset($_SESSION['username']);
+          header('location: index.php');
+        }
+       ?>
     </div>
     <div class="tings_to_do">
       <h2>Things to do</h2>
@@ -32,9 +41,9 @@
           "</p><button class='drop-btn' id='drop$index'></button>
           </div>";
           $index++;
-          }
-        }
-        include('todoDrop.php');
+         }
+       }
+       include('todoDrop.php');
        ?>
        <form class="" action="todos.php" method="post">
          <button class="add_todo" name="add_todo">ADD</button>
@@ -47,13 +56,17 @@
       $sql = "SELECT * FROM todos WHERE user_id = (SELECT id FROM users WHERE username = '$username') AND status = 1";
       $result = mysqli_query($db, $sql);
 
+      $index = 0;
       if($result->num_rows > 0){
         while($row = $result->fetch_assoc()) {
-          echo "<div class=\"todo\">"
+          $userId = $row['user_id'];
+          echo "<div class='todo' id='drop$index'><p user_id='$userId'>"
           .$row['content'].
-          "<button class='done-btn'></button></div>";
-        }
-      }
+          "</p><button class='done-btn' id='drop$index'></button>
+          </div>";
+          $index++;
+         }
+       }
        ?>
     </div>
     <div class="done">
