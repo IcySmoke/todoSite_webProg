@@ -15,7 +15,7 @@
       <form class="" action="todos.php" method="post">
         <input type="text" name="search" value="">
         <button class='search-btn' name='search'></button>
-        <button class='exit-btn' name='exit'></button>
+        <button type="submit" class='exit-btn' name='exit'></button>
       </form>
       <?php
         if(isset($_POST['exit'])){
@@ -39,6 +39,7 @@
           echo "<div class='todo' id='drop$index'><p user_id='$userId'>"
           .$row['content'].
           "</p><button class='drop-btn' id='drop$index'></button>
+          <button class='delete-btn' id='delete$index'></button>
           </div>";
           $index++;
          }
